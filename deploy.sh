@@ -50,7 +50,9 @@ wget -r -k -E http://unSite.com/dossier
 
 
 
-
+# ajouter conditions :
+# if le site est deja telechargé
+# je ne telecharge pas deja qqc sur le port actuel
 
 
 
