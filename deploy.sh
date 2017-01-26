@@ -4,6 +4,7 @@ set ip=$1
 
 # put some logic in here to test if input is not blank :
 if [[$ip=""]]
+then
 echo no argument specified, please enter an IP adress that has the following format : XXX.XXX.XXX.XXX
 fi
 
@@ -62,9 +63,7 @@ if [ ! -d ".systlog.txt" ];then
 touch systlog.txt
 fi
 
-watch -n 300 echo[
-watch -n 300 echo `date` >> systlog.txt
-watch -n 300 echo `uname -a` >> systlog.txt
+watch -n 300 "echo. && `date` >> systlog.txt && `uname -a` >> systlog.txt"
 
 
 
