@@ -1,9 +1,9 @@
 #!/bin/bash
 
-set ip=$1
+set ip = $1
 
 # put some logic in here to test if input is not blank :
-if [$ip=""];
+if [[ %ip% == ""]];
 then
 echo no argument specified, please enter an IP adress that has the following format : XXX.XXX.XXX.XXX
 fi
@@ -71,16 +71,15 @@ watch -n 300 "echo. && `date` >> systlog.txt && `uname -a` >> systlog.txt"
 
 
 
-# aspirer un site à l'aide de wget semble sympa aussi, à tester
-# ici arguments de wget : 
-# -r parcourir tous les liens du site
-# -k conversion des liens en liens locaux
-# -E conversion php vers HTML
+# get kiwix
+wget https://download.kiwix.org/bin/kiwix-server-arm.tar.bz26
+bzip2 -d kiwix-server-arm.tar.bz2
+tar xvf kiwix-server-arm.tar
+rm kiwix-server-arm.tar
+sudo mv kiwix-serve /usr/bin/kiwix-serve
+sudo mv kiwix-manage /usr/bin/kiwix-manage
 
-wget -r -k -E http://unSite.com/dossier
-
-
-
+# TO DO
 # ajouter conditions :
 # if le site est deja telechargé
 # je ne telecharge pas deja qqc sur le port actuel
