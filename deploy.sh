@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set ip=$1
-set 
+
 # put some logic in here to test if input is not blank :
 if [[$ip=""]]
 echo no argument specified, please enter an IP adress that has the following format : XXX.XXX.XXX.XXX
