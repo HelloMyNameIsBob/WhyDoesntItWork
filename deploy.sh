@@ -3,7 +3,7 @@
 set ip=$1
 
 # put some logic in here to test if input is not blank :
-if [[$ip=""]]
+if [$ip=""];
 then
 echo no argument specified, please enter an IP adress that has the following format : XXX.XXX.XXX.XXX
 fi
@@ -29,17 +29,19 @@ function valid_ip()
 
 
 # check input IP adress for format
-if 
-valid_ip $ip; then stat='good'; else stat='bad'; 
+if valid_ip $ip; 
+then stat='good'; else stat='bad'; 
 fi
 
 # if IP is written in wrong format , echo error
-if "%stat%" == "bad" 
+if "%stat%" == "bad"; 
+then
 echo the entered IP adress %ip% is not written correct XXX.XXX.XXX.XXX format
 fi
 
 # if IP is written in valid format, process whole program logic
 if "%stat%" == "good" 
+then
 
 # updates and upgrades system, then installs nginx server.
 sudo apt-get update -y
@@ -59,7 +61,8 @@ sudo apt-get install nginx -y
 #
 # ...
 
-if [ ! -d ".systlog.txt" ];then
+if [ ! -d ".systlog.txt" ];
+then
 touch systlog.txt
 fi
 
