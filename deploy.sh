@@ -1,15 +1,44 @@
 #!/bin/bash
 
-
-# put some logic in here to test if input $1 is in good format, or is not blank :
-# if [[$1=""]]
-# echo "no argument specified" message or sth like this
-# fi
-
-# for the ip format test, we should refer to this link that looks quite helpful
-# http://www.linuxjournal.com/content/validating-ip-address-bash-script
+set ip=$1
+set 
+# put some logic in here to test if input is not blank :
+if [[$ip=""]]
+echo no argument specified, please enter an IP adress that has the following format : XXX.XXX.XXX.XXX
+fi
 
 
+# function that check if IP inputed in it is in corret IP format
+function valid_ip()
+{
+    local  ip=$1
+    local  stat=1
+
+    if [[ $ip =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then
+        OIFS=$IFS
+        IFS='.'
+        ip=($ip)
+        IFS=$OIFS
+        [[ ${ip[0]} -le 255 && ${ip[1]} -le 255 \
+            && ${ip[2]} -le 255 && ${ip[3]} -le 255 ]]
+        stat=$?
+    fi
+    return $stat
+}
+
+
+# check input IP adress for format
+if 
+valid_ip $ip; then stat='good'; else stat='bad'; 
+fi
+
+# if IP is written in wrong format , echo error
+if "%stat%" == "bad" 
+echo the entered IP adress %ip% is not written correct XXX.XXX.XXX.XXX format
+fi
+
+# if IP is written in valid format, process whole program logic
+if "%stat%" == "good" 
 
 # updates and upgrades system, then installs nginx server.
 sudo apt-get update -y
@@ -54,7 +83,7 @@ wget -r -k -E http://unSite.com/dossier
 # if le site est deja telechargé
 # je ne telecharge pas deja qqc sur le port actuel
 
-
-
+# end of the "valid IP" condition 
+fi 
 
 exit 0
